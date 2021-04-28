@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body></body>
+
+<script>
+    var loadFonts = function () {
+    var testString = 'mmmmmmmmmmlli'
+    var h = document.getElementsByTagName('body')[0]
+    var fontsDiv = document.createElement('div')
+
+    // creates a span and load the font to detect and a base font for fallback
+    var createSpanWithFonts = function (fontToDetect) {
+      var s = document.createElement('span')
+      s.innerHTML = testString
+      s.style.fontFamily = "'" + fontToDetect + "'"
+      fontsDiv.appendChild(s)
+    }
+    createSpanWithFonts("Times New Roman")
+    createSpanWithFonts("Arial")
+    h.appendChild(fontsDiv)
+  }
+  loadFonts()
+</script>
