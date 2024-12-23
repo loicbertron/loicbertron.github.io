@@ -58,6 +58,7 @@
           row.insertCell().textContent = plugin.length;
         }
         pluginsDiv.appendChild(table);
+        pluginsDiv.appendChild('<BR><span>PluginArray ? :'+ JSON.stringify(navigator.plugins instanceof PluginArray) + '</span>')
       }
     }
 
