@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Plugin Inspector</title>
+  <style>
+    body {
+      font-family: monospace;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>navigator.plugins and navigator.mimeTypes</h1>
+
+  <h2>navigator.plugins</h2>
+  <div id="plugins"></div>
+
+  <h2>navigator.mimeTypes</h2>
+  <div id="mimeTypes"></div>
+
+  <script>
+    function displayPlugins() {
+      const pluginsDiv = document.getElementById('plugins');
+      if (navigator.plugins === undefined) {
+        pluginsDiv.textContent = 'navigator.plugins is undefined';
+      } else if (navigator.plugins.length === 0) {
+        pluginsDiv.textContent = 'navigator.plugins is an empty PluginArray';
+      } else {
+        const table = document.createElement('table');
+        table.innerHTML = `
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Filename</th>
+              <th>Number of Mime Types</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        `;
+        const tbody = table.querySelector('tbody');
+
+        for (let i = 0; i < navigator.plugins.length; i++) {
+          const plugin = navigator.plugins[i];
+          const row = tbody.insertRow();
+          row.insertCell().textContent = plugin.name;
+          row.insertCell().textContent = plugin.description;
+          row.insertCell().textContent = plugin.filename;
+          row.insertCell().textContent = plugin.length;
+        }
+        pluginsDiv.appendChild(table);
+      }
+    }
+
+    function displayMimeTypes() {
+      const mimeTypesDiv = document.getElementById('mimeTypes');
+      if (navigator.mimeTypes === undefined) {
+        mimeTypesDiv.textContent = 'navigator.mimeTypes is undefined';
+      } else if (navigator.mimeTypes.length === 0) {
+        mimeTypesDiv.textContent = 'navigator.mimeTypes is an empty MimeTypeArray';
+      } else {
+        const table = document.createElement('table');
+        table.innerHTML = `
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Description</th>
+              <th>Suffixes</th>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        `;
+        const tbody = table.querySelector('tbody');
+
+        for (let i = 0; i < navigator.mimeTypes.length; i++) {
+          const mimeType = navigator.mimeTypes[i];
+          const row = tbody.insertRow();
+          row.insertCell().textContent = mimeType.type;
+          row.insertCell().textContent = mimeType.description;
+          row.insertCell().textContent = mimeType.suffixes;
+        }
+
+        mimeTypesDiv.appendChild(table);
+      }
+    }
+
+    displayPlugins();
+    displayMimeTypes();
+  </script>
+</body>
+</html>
