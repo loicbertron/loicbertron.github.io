@@ -26,6 +26,9 @@
   <h2>navigator.mimeTypes</h2>
   <div id="mimeTypes"></div>
 
+  <h2>Other stuff</h2>
+  <div id="stuff"></div>
+
   <script>
     function displayPlugins() {
       const pluginsDiv = document.getElementById('plugins');
@@ -95,8 +98,19 @@
       }
     }
 
-    displayPlugins();
-    displayMimeTypes();
+    function displayOtherStuff() {
+      const stuffDiv = document.getElementById('stuff');
+      let textToAppendInStuff = "";
+      textToAppendInStuff += 'webkitPersistentStorage' in navigator ? "webkitPersistentStorage in navigator\n" : "webkitPersistentStorage NOT in navigator\n";
+      textToAppendInStuff += 'webkitTemporaryStorage' in navigator ? "webkitTemporaryStorage in navigator\n" : "webkitTemporaryStorage NOT in navigator\n";  
+      textToAppendInStuff += navigator.vendor.indexOf('Google') === 0 ? "navigator.vendor.indexOf('Google') === 0\n" : "navigator.vendor.indexOf('Google') !== 0\n";  
+      textToAppendInStuff += 'webkitResolveLocalFileSystemURL' in window ? "webkitResolveLocalFileSystemURL in window\n" : "webkitResolveLocalFileSystemURL NOT in window\n";  
+      textToAppendInStuff += 'BatteryManager' in window ? "BatteryManager in window\n" : "BatteryManager NOT in window\n";  
+      textToAppendInStuff += 'webkitMediaStream' in window ? "webkitMediaStream in window\n" : "webkitMediaStream NOT in window\n";  
+      textToAppendInStuff += 'webkitSpeechGrammar' in window ? "webkitSpeechGrammar in window\n" : "webkitSpeechGrammar NOT in window\n";  
+
+      stuffDiv.textContent = textToAppendInStuff;
+    }
   </script>
 </body>
 </html>
