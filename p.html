@@ -107,9 +107,10 @@
       textToAppendInStuff += 'webkitResolveLocalFileSystemURL' in window ? "webkitResolveLocalFileSystemURL in window<BR />" : "webkitResolveLocalFileSystemURL NOT in window<BR />";  
       textToAppendInStuff += 'BatteryManager' in window ? "BatteryManager in window<BR />" : "BatteryManager NOT in window<BR />";  
       textToAppendInStuff += 'webkitMediaStream' in window ? "webkitMediaStream in window<BR />" : "webkitMediaStream NOT in window<BR />";  
-      textToAppendInStuff += 'webkitSpeechGrammar' in window ? "webkitSpeechGrammar in window<BR />" : "webkitSpeechGrammar NOT in window<BR />";  
+      textToAppendInStuff += 'webkitSpeechGrammar' in window ? "webkitSpeechGrammar in window<BR />" : "webkitSpeechGrammar NOT in window<BR />"; 
+      textToAppendInStuff += 'unknownProperty45' in window ? "unknownProperty45 in window<BR />" : "unknownProperty45 NOT in window<BR />"; 
 
-      stuffDiv.textContent = textToAppendInStuff;
+      stuffDiv.innerHTML = textToAppendInStuff;
     }
 
     displayPlugins();
