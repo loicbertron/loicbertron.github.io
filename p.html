@@ -110,6 +110,11 @@
       textToAppendInStuff += 'webkitSpeechGrammar' in window ? "webkitSpeechGrammar in window<BR />" : "webkitSpeechGrammar NOT in window<BR />"; 
       textToAppendInStuff += 'unknownProperty45' in window ? "unknownProperty45 in window<BR />" : "unknownProperty45 NOT in window<BR />"; 
 
+      textToAppendInStuff += 'SharedWorker' in window ? "SharedWorker in window<BR />" : "SharedWorker NOT in window<BR />"; 
+      textToAppendInStuff += navigator['connection'] ? "connection in navigator<BR />" : "connection NOT in navigator<BR />";
+      textToAppendInStuff += 'ontypechange' in navigator['connection'] ? "ontypechange in navigator[connection]<BR />": "ontypechange NOT in navigator[connection]<BR />";
+      textToAppendInStuff += 'sinkId' in new Audio() ? "sinkId in new Audio()<BR />" : "sinkId NOT in new Audio()<BR />";
+
       stuffDiv.innerHTML = textToAppendInStuff;
     }
 
